@@ -13,11 +13,11 @@ def data_frame_for_track_segment(segment):
 
     for point in segment.points:
         seg_dict[point.time] = [point.latitude, point.longitude, point.elevation]
-    dframe = pd.DataFrame(data=seg_dict)
+    seg_frame = pd.DataFrame(data=seg_dict)
     # Switch columns and rows s.t. timestamps are rows and gps data columns
-    dframe = dframe.T
-    dframe.columns = ['latitude', 'longitude', 'altitude']
-    return dframe
+    seg_frame = seg_frame.T
+    seg_frame.columns = ['latitude', 'longitude', 'altitude']
+    return seg_frame
 
 
 def track_segment_mapping(track):
