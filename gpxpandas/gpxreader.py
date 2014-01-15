@@ -21,8 +21,8 @@ def data_frame_for_track_segment(segment):
 
 
 def track_segment_mapping(track):
-    segments = [ data_frame_for_track_segment(segment)
-                 for segment in track.segments ]
+    segments = [data_frame_for_track_segment(segment)
+                for segment in track.segments]
     return segments
 
 
