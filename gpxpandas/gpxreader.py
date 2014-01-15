@@ -18,3 +18,15 @@ def data_frame_for_track_segment(segment):
     dframe = dframe.T
     dframe.columns = ['latitude', 'longitude', 'altitude']
     return dframe
+
+
+def track_segment_mapping(track):
+    segments = [ data_frame_for_track_segment(segment)
+                 for segment in track.segments ]
+    return segments
+
+
+def pandas_data_frame_for_gpx(gpx):
+    tracks_frames = [track_segment_mapping(track) for track in gpx.tracks]
+    tracks_frame = pd.DataFrame(tracks_frames)
+    return tracks_frame
