@@ -12,11 +12,12 @@ def data_frame_for_track_segment(segment):
     seg_dict = {}
 
     for point in segment.points:
-        seg_dict[point.time] = [point.latitude, point.longitude, point.elevation]
+        seg_dict[point.time] = [point.latitude, point.longitude,
+                                point.elevation, point.speed]
     seg_frame = pd.DataFrame(data=seg_dict)
     # Switch columns and rows s.t. timestamps are rows and gps data columns
     seg_frame = seg_frame.T
-    seg_frame.columns = ['latitude', 'longitude', 'altitude']
+    seg_frame.columns = ['latitude', 'longitude', 'altitude', 'speed']
     return seg_frame
 
 
