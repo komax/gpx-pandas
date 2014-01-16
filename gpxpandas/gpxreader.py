@@ -30,4 +30,4 @@ def track_segment_mapping(track):
 def pandas_data_frame_for_gpx(gpx):
     tracks_frames = [track_segment_mapping(track) for track in gpx.tracks]
     tracks_frame = pd.DataFrame(tracks_frames)
-    return tracks_frame
+    return tracks_frame.unstack()
