@@ -31,5 +31,9 @@ def pandas_data_frame_for_gpx(gpx):
     tracks_frames = (track_segment_mapping(track) for track in gpx.tracks)
     # Create a hierarchical DataFrame by unstacking.
     tracks_frame = pd.DataFrame(tracks_frames)
+    unstacked_frame = tracks_frame.unstack()
+    unstacked_frame.index.name = 'tracks'
     assert gpx.name
-    return pd.DataFrame({gpx.name:tracks_frame.unstack()})
+    d_frame = pd.DataFrame({gpx.name: unstacked_frame}).T
+    d_frame.index.name = 'name'
+    return d_frame
